@@ -1,0 +1,16 @@
+{{extend 'layout.html'}}
+
+<h1>Course schedule</h1>
+<form enctype="multipart/form-data" action="{{=URL('regs','schedules')}}" method="post">
+    
+    <input type="text" name="query" value="{{=query}}" >
+    <button type="submit">search</button>
+</form>
+{% if schedules %}
+    <h2>Search Results:</h2>
+    <ul>
+        {% for schedule in schedules %}
+            <li><a href="{{=URL('courseschedules', 'details', args=[courseschedules.id])}}">{{=courseschedules.id}} ({{=courseschedules.day}}) - {{=courseschedules.RoomNo}}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}

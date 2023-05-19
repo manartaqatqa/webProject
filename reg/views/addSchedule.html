@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+
+<h1>Add Schedule</h1>
+<form enctype="multipart/form-data" action="{{=URL('regs','addSchedule')}}" method="post">
+    
+    <input type="text" name="query" value="{{=query}}" >
+    <button type="submit">addSchedule</button>
+</form>
+{% if Schedule %}
+    <ul>
+        {% for Schedule in courseshedules %}
+            <li><a href="{{=URL('courses', 'details', args=[course.id])}}">{{=Schedule.id}} ({{=Schedule.day}}) - {{=Schedule.RoomNo}}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
